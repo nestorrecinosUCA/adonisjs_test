@@ -24,9 +24,4 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.get('/nestor', async ({ request }) => {
-  console.log(request.url())
-  return { name: 'Nestor' }
-})
-
-Route.get('/users', 'UsersController.getUsers');
+Route.get('/todo', 'TodosController.index');
