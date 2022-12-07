@@ -25,3 +25,4 @@ Route.get('/', async () => {
 })
 
 Route.get('/todo', 'TodosController.index');
+Route.post('/todo', 'TodosController.store');
