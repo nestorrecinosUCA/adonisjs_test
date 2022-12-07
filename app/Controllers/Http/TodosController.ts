@@ -14,4 +14,11 @@ export default class TodosController {
     })
     return response.status(201).send(newTodo)
   }
+
+  public async update({ request, response, params }: HttpContextContract): Promise<void> {
+    const todoToUpdate = await Todo.findOrFail(params.id)
+    todoToUpdate.is_completed = request.input('is_completed')
+    todoToUpdate.save()
+    return response.status(204).send(todoToUpdate)
+  }
 }
