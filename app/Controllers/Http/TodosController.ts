@@ -19,6 +19,6 @@ export default class TodosController {
     const todoToUpdate = await Todo.findOrFail(params.id)
     todoToUpdate.is_completed = request.input('is_completed')
     todoToUpdate.save()
-    return response.status(204).send(todoToUpdate)
+    return response.status(200).send(todoToUpdate)
   }
 }
