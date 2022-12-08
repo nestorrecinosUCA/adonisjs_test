@@ -3,8 +3,10 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Todo from 'App/Models/Todo'
 
 export default class TodosController {
-  public async index(): Promise<Todo[]> {
-    return Todo.all()
+  public async index({ request }: HttpContextContract): Promise<Todo[]> {
+    const page = request.input('page', 1)
+    const limit = request.input('per_page', 10)
+    return Todo.query().paginate(page, limit)
   }
 
   public async store({ request, response }: HttpContextContract): Promise<void> {
