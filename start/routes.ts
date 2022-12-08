@@ -24,9 +24,11 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 Route.group(() => {
-  Route.get('/todo', 'TodosController.index')
-  Route.post('/todo', 'TodosController.store')
-  Route.patch('/todo/:id', 'TodosController.update')
-})
-  .prefix('api')
-  .middleware('auth')
+  Route.group(() => {
+    Route.get('/todo', 'TodosController.index')
+    Route.post('/todo', 'TodosController.store')
+    Route.patch('/todo/:id', 'TodosController.update')
+  }).middleware('auth')
+
+  Route.post('/register', 'AuthController.index')
+}).prefix('api')
