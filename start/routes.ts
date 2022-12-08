@@ -30,5 +30,5 @@ Route.group(() => {
     Route.patch('/todo/:id', 'TodosController.update')
   }).middleware('auth')
 
-  Route.post('/register', 'AuthController.index')
+  Route.post('/register', 'AuthController.register')
 }).prefix('api')
