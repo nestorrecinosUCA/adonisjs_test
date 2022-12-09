@@ -1,19 +1,23 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Todo from 'App/Models/Todo'
+import User from 'App/Models/User'
 
 export default class TodosController {
   public async index({ request }: HttpContextContract): Promise<Todo[]> {
     const page = request.input('page', 1)
     const limit = request.input('per_page', 10)
-    return Todo.query().paginate(page, limit)
+    return await Todo.query().preload('user').paginate(page, limit)
   }
 
-  public async store({ request, response }: HttpContextContract): Promise<void> {
+  public async store({ request, response, auth }: HttpContextContract): Promise<void> {
+    const userId: number = auth.user?.$original.id
     const newTodo = await Todo.create({
       title: request.input('title'),
       is_completed: false,
-    })
+      user_id: userId
+    })  
+
     return response.created(newTodo)
   }
 

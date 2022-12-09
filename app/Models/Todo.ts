@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import User from 'App/Models/User'
 
 export default class Todo extends BaseModel {
   @column({ isPrimary: true })
@@ -16,4 +17,13 @@ export default class Todo extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @column()
+  public user_id: number;
+
+  @hasOne(() => User, {
+    localKey: 'user_id',
+    foreignKey: 'id'
+  })
+  public user: HasOne<typeof User>
 }
