@@ -13,6 +13,7 @@ export default class extends BaseSchema {
       table.timestamp('created_at', { useTz: true })
       table.string('title')
       table.boolean('is_completed')
+      table.integer('user_id').unsigned().references('users.id').onDelete('CASCADE')
       table.timestamp('updated_at', { useTz: true })
     })
   }
