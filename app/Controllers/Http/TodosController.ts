@@ -14,7 +14,7 @@ export default class TodosController {
       title: request.input('title'),
       is_completed: false,
     })
-    return response.status(201).send(newTodo)
+    return response.created(newTodo)
   }
 
   public async update({ request, response, params }: HttpContextContract): Promise<void> {
