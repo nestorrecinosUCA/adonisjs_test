@@ -14,17 +14,13 @@ export default {
 			info: {
 				title: 'Application with swagger docs',
 				version: '1.0.0',
-				description: 'My application with swagger docs'
-			}
+				description: 'My application with swagger docs',
+			},
 		},
 
-		apis: [
-			'app/**/*.ts',
-			'docs/swagger/**/*.yml',
-			'start/routes.ts'
-		],
-		basePath: '/'
+		apis: ['app/**/*.ts', 'docs/swagger/**/*.yml', 'start/routes.ts'],
+		basePath: '/',
 	},
 	mode: process.env.NODE_ENV === 'production' ? 'PRODUCTION' : 'RUNTIME',
-  specFilePath: 'docs/swagger.json'
+	specFilePath: 'docs/swagger.json',
 } as SwaggerConfig

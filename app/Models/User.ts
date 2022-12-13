@@ -23,7 +23,7 @@ export default class User extends BaseModel {
   public updatedAt: DateTime
 
   @hasMany(() => Todo, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
   })
   public todos: HasMany<typeof Todo>
 

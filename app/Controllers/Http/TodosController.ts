@@ -14,8 +14,8 @@ export default class TodosController {
     const newTodo = await Todo.create({
       title: request.input('title'),
       is_completed: false,
-      user_id: userId
-    })  
+      user_id: userId,
+    })
 
     return response.created(newTodo)
   }

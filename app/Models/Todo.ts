@@ -19,11 +19,11 @@ export default class Todo extends BaseModel {
   public updatedAt: DateTime
 
   @column()
-  public user_id: number;
+  public user_id: number
 
   @hasOne(() => User, {
     localKey: 'user_id',
-    foreignKey: 'id'
+    foreignKey: 'id',
   })
   public user: HasOne<typeof User>
 }
