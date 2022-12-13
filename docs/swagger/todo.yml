@@ -54,10 +54,6 @@
           required: true
           schema:
             properties:
-              title:
-                type: string
-                example: item number 2
-                required: true
               is_completed:
                 type: boolean
                 required: false
