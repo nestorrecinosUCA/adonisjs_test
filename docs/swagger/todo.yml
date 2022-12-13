@@ -1,0 +1,68 @@
+/api/todo:
+  post:
+    tags:
+      - Todo
+    security:
+      - BearerAuth: []
+    description: Create a new item
+    consumes:
+      - application/json
+    requestBody:
+      required: true
+      content:
+        application/json:
+          required: true
+          schema:
+            properties:
+              title:
+                type: string
+                example: item number 2
+                required: true
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Success
+      401:
+        description: Unauthorized
+
+  get:
+    tags:
+      - Todo
+    security:
+      - BearerAuth: []
+    description: Get all todo elements
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Success
+
+/api/todo/{id}:
+  patch:
+    tags:
+      - Todo
+    security:
+      - BearerAuth: []
+    description: Update an element
+    parameters:
+      - name: id
+        in: path
+    requestBody:
+      content:
+        application/json:
+          required: true
+          schema:
+            properties:
+              title:
+                type: string
+                example: item number 2
+                required: true
+              is_completed:
+                type: boolean
+                required: false
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Success

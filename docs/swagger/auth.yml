@@ -1,0 +1,56 @@
+/api/auth/login:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Login
+    consumes:
+      - application/json
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              email:
+                type: string
+                example: 'email@email.com'
+                required: true
+              password:
+                type: string
+                required: true
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Success
+      401:
+        description: Unauthorized
+
+/api/auth/register:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Register
+    parameters:
+      - name: credentials
+        in: body
+        required: true
+        schema:
+          properties:
+            email:
+              type: string
+              example: user@email.com
+              required: true
+            password:
+              type: string
+              required: string
+            password_confirmation:
+              type: string
+              required: string
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Success

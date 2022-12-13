@@ -1,0 +1,23 @@
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+    Todo:
+      type: object
+      properties:
+        title:
+          type: string
+        is_completed:
+          type: boolean
+        user_id:
+          type: number
