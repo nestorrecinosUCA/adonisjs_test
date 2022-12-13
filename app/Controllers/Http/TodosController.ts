@@ -1,7 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Todo from 'App/Models/Todo'
-import User from 'App/Models/User'
 
 export default class TodosController {
   public async index({ request }: HttpContextContract): Promise<Todo[]> {
